@@ -432,7 +432,7 @@ const CONFIG = {
   .title {
     font-family: var(--display);
     font-weight: 400;
-    font-size: clamp(52px, 16vw, 72px);
+    font-size: clamp(58px, 19vw, 88px);
     text-transform: uppercase;
     text-align: center;
     line-height: 0.92;
@@ -449,11 +449,6 @@ const CONFIG = {
   @keyframes title-shimmer {
     from { background-position: 0% 0; }
     to   { background-position: 100% 0; }
-  }
-  .title .word { display: block; }
-  .title .word:last-child {
-    font-size: 0.72em;
-    letter-spacing: 0.14em;
   }
   .subtitle {
     margin-top: 16px;
@@ -875,22 +870,9 @@ const CONFIG = {
     <button class="lang-btn" data-lang="en">EN</button>
   </div>
 
-  <div class="emblem reveal" style="--i:0">
-    <svg class="emblem-ring" viewBox="0 0 148 148" aria-hidden="true">
-      <defs>
-        <path id="ring-path" d="M 74,74 m -62,0 a 62,62 0 1,1 124,0 a 62,62 0 1,1 -124,0"/>
-      </defs>
-      <text>
-        <textPath href="#ring-path">STILIST STORE&#160;&#160;•&#160;&#160;TOSHKENT&#160;&#160;•&#160;&#160;MANIKYUR&#160;&#160;•&#160;&#160;PEDIKYUR&#160;&#160;•&#160;&#160;</textPath>
-      </text>
-    </svg>
-    <div class="emblem-core"><span>S</span></div>
-  </div>
-
-  <h1 class="title reveal" style="--i:1"><span class="word">Stilist</span><span class="word">Store</span></h1>
+  <h1 class="title reveal" style="--i:1">Stilist</h1>
   <p class="subtitle reveal" style="--i:2" id="subtitle"></p>
-  <p class="tagline reveal" style="--i:3" id="tagline"></p>
-  <p class="delivery reveal" style="--i:4" id="delivery"></p>
+  <p class="delivery reveal" style="--i:3" id="delivery"></p>
 
   <div class="divider reveal" style="--i:5"><span class="gem"></span></div>
 
@@ -1032,7 +1014,6 @@ const CONFIG = {
   function renderAll() {
     document.documentElement.lang = lang;
     document.getElementById('subtitle').textContent = t(CONFIG.texts.subtitle);
-    document.getElementById('tagline').textContent = t(CONFIG.texts.tagline);
     document.getElementById('delivery').textContent = t(CONFIG.texts.delivery);
     document.getElementById('branches-title').textContent = t(CONFIG.texts.branchesTitle);
     document.getElementById('made').textContent = t(CONFIG.texts.made);
