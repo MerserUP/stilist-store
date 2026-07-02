@@ -300,10 +300,9 @@ const CONFIG = {
     position: absolute;
     opacity: 1;
     filter: drop-shadow(0 12px 28px rgba(236, 75, 157, 0.45));
-    animation:
-      floaty-bob var(--dur, 8s) ease-in-out var(--delay, 0s) infinite alternate,
-      floaty-sway calc(var(--dur, 8s) * 1.6) ease-in-out var(--delay, 0s) infinite alternate;
+    animation: floaty-bob var(--dur, 8s) ease-in-out var(--delay, 0s) infinite alternate;
     will-change: transform;
+    transform: translateZ(0);
   }
   .floaty img {
     width: 100%;
@@ -316,22 +315,20 @@ const CONFIG = {
   .floaty img.loaded { opacity: 1; }
   .floaty svg { display: block; width: 100%; height: 100%; }
   @keyframes floaty-bob {
-    from { transform: translateY(0) rotate(var(--rot, 0deg)); }
-    to   { transform: translateY(-26px) rotate(calc(var(--rot, 0deg) + 8deg)); }
-  }
-  @keyframes floaty-sway {
-    from { margin-left: 0; }
-    to   { margin-left: 14px; }
+    from { transform: translate3d(0, 0, 0) rotate(var(--rot, 0deg)); }
+    to   { transform: translate3d(12px, -26px, 0) rotate(calc(var(--rot, 0deg) + 8deg)); }
   }
   .floaty.sparkle {
     animation: sparkle-spin var(--dur, 10s) linear infinite, sparkle-pulse 3s ease-in-out var(--delay, 0s) infinite alternate;
   }
   @keyframes sparkle-spin { to { transform: rotate(360deg); } }
   @keyframes sparkle-pulse { from { opacity: 0.35; } to { opacity: 0.9; } }
-  /* на телефонах товары приглушаем — контент важнее */
+  /* на телефонах: товары приглушаем и снимаем тяжёлые эффекты, чтобы скролл был плавным */
   @media (max-width: 700px) {
-    .floaty { opacity: 0.55; filter: drop-shadow(0 8px 18px rgba(236, 75, 157, 0.3)); }
+    .floaty { opacity: 0.55; filter: none; }
     .floaty.sparkle { opacity: 0.4; }
+    .grain { animation: none; opacity: 0.03; }
+    .link-card::after { animation: none; }
   }
 
   /* ---------- каркас ---------- */
