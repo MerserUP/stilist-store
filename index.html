@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Stilist Store — manikyur & pedikyur narsalari, Toshkent</title>
-<meta name="description" content="Stilist Store — beauty masterlar uchun premium manikyur va pedikyur materiallari. Toshkent.">
+<meta name="description" content="Stilist Store — beauty masterlar uchun premium manikyur va pedikyur materiallari. Toshkent. Butun O'zbekiston bo'ylab yetkazib berish.">
 <meta property="og:title" content="Stilist Store">
 <meta property="og:description" content="Manikyur & pedikyur narsalari — Toshkent ❤️">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,76 +15,156 @@
 <script>
 /* ============================================================
    ⭐ НАСТРОЙКИ — редактируйте только этот блок!
-   Поменяли ссылку/номер/адрес здесь — страница обновится сама.
+   Тексты на трёх языках: uz / ru / en.
+   Можно писать и просто строку — она покажется на всех языках.
    ============================================================ */
 const CONFIG = {
 
   // ============ КНОПКИ ============
-  // Чтобы ДОБАВИТЬ кнопку — скопируйте блок { ... }, (с фигурными
-  // скобками и запятой) и вставьте в нужное место списка.
-  // Порядок в списке = порядок на странице.
-  //
+  // Добавить кнопку — скопируйте блок { ... }, целиком.
   //   icon:  "instagram" | "telegram" | "catalog" | "phone" | "pin" | "link" | "heart" | "star" | "cart"
-  //   style: "pink"  — яркая фирменная кнопка
-  //          "glass" — спокойная стеклянная кнопка
-  //   url:   куда ведёт кнопка
-  //   title: большая надпись
-  //   sub:   маленькая надпись под ней (можно оставить "")
+  //   style: "pink" — яркая, "glass" — стеклянная
   buttons: [
     {
       icon: "instagram",
       style: "pink",
       url: "https://www.instagram.com/stilist_store/",
       title: "Instagram — @stilist_store",
-      sub: "Yangi mahsulotlar va aksiyalar",
+      sub: {
+        uz: "Yangi mahsulotlar va aksiyalar",
+        ru: "Новинки и акции",
+        en: "New arrivals & promos",
+      },
     },
     {
       icon: "catalog",
       style: "pink",
       url: "https://t.me/stiliss_bot",
-      title: "Katalog — buyurtma berish",
-      sub: "Telegram botda tanlang va buyurtma qiling",
+      title: {
+        uz: "Katalog — buyurtma berish",
+        ru: "Каталог — оформить заказ",
+        en: "Catalog — place an order",
+      },
+      sub: {
+        uz: "Telegram botda tanlang va buyurtma qiling",
+        ru: "Выбирайте и заказывайте в Telegram-боте",
+        en: "Browse and order in our Telegram bot",
+      },
     },
     {
       icon: "link",
       style: "glass",
       url: "https://stilis.uz",
-      title: "Sayt — stilis.uz",
-      sub: "Butun O'zbekiston bo'ylab yetkazib berish",
+      title: {
+        uz: "Sayt — stilis.uz",
+        ru: "Сайт — stilis.uz",
+        en: "Website — stilis.uz",
+      },
+      sub: {
+        uz: "Onlayn buyurtma va yetkazib berish",
+        ru: "Онлайн-заказ и доставка",
+        en: "Order online with delivery",
+      },
     },
     {
       icon: "telegram",
       style: "glass",
       url: "https://t.me/stiliststore",
-      title: "Telegram kanal",
-      sub: "Yangiliklar va narxlar",
+      title: {
+        uz: "Telegram kanal",
+        ru: "Telegram-канал",
+        en: "Telegram channel",
+      },
+      sub: {
+        uz: "Yangiliklar va narxlar",
+        ru: "Новости и цены",
+        en: "News and prices",
+      },
     },
   ],
 
-  // --- Филиалы: можно добавлять сколько угодно, просто копируйте блок { ... }, ---
+  // ============ ФИЛИАЛЫ ============
+  // featured: true — главный филиал (карточка крупнее и ярче)
   branches: [
     {
-      name: "Parkent filiali",
-      address: "Parkent, Toshkent",
+      name: {
+        uz: "Parkent filiali",
+        ru: "Филиал Паркентский",
+        en: "Parkent branch",
+      },
+      address: {
+        uz: "Parkent, Toshkent",
+        ru: "Паркентский, Ташкент",
+        en: "Parkent, Tashkent",
+      },
       mapUrl: "https://yandex.com/maps/org/stylist_stilist_store/99555696405/",
       phones: ["+998 99 729-81-52"],
-      featured: true,        // главный филиал — карточка крупнее и ярче
+      featured: true,
     },
     {
-      name: "TTZ-1 filiali",
-      address: "TTZ 1-jilmassiv, Toshkent",
+      name: {
+        uz: "TTZ-1 filiali",
+        ru: "Филиал ТТЗ-1",
+        en: "TTZ-1 branch",
+      },
+      address: {
+        uz: "TTZ 1-jilmassiv, Toshkent",
+        ru: "ТТЗ 1-й жилмассив, Ташкент",
+        en: "TTZ-1, Tashkent",
+      },
       mapUrl: "https://yandex.uz/maps/-/CTeBMHIG",
       phones: ["+998 77 961-20-20"],
     },
   ],
 
-  // --- Режим работы ---
-  workingHours: "Har kuni 08:00 — 21:00",
+  // ============ РЕЖИМ РАБОТЫ ============
+  workingHours: {
+    uz: "Har kuni 08:00 — 21:00",
+    ru: "Ежедневно 08:00 — 21:00",
+    en: "Daily 08:00 — 21:00",
+  },
 
-  // --- Летающие товары ---
-  // PNG-фото товаров без фона из папки img.
-  // Добавить товар: положите фото в папку img и допишите строку сюда.
-  // Если список пуст — летают рисованные флаконы.
+  // ============ ОБЩИЕ ТЕКСТЫ ============
+  texts: {
+    subtitle: {
+      uz: "Manikyur & Pedikyur narsalari",
+      ru: "Всё для маникюра и педикюра",
+      en: "Manicure & Pedicure supplies",
+    },
+    tagline: {
+      uz: "Beauty masterlar uchun premium materiallar — Toshkent ❤️",
+      ru: "Премиальные материалы для beauty-мастеров — Ташкент ❤️",
+      en: "Premium supplies for beauty masters — Tashkent ❤️",
+    },
+    delivery: {
+      uz: "🚚 Butun O'zbekiston bo'ylab yetkazib berish · boshqa davlatlarga ham ✈️",
+      ru: "🚚 Доставка по всему Узбекистану · и в другие страны ✈️",
+      en: "🚚 Delivery across Uzbekistan · worldwide shipping ✈️",
+    },
+    branchesTitle: {
+      uz: "Filiallarimiz",
+      ru: "Наши филиалы",
+      en: "Our branches",
+    },
+    mapChip: {
+      uz: "Xaritada ochish",
+      ru: "Открыть на карте",
+      en: "Open in maps",
+    },
+    made: {
+      uz: "Stilist Store — onagulim bilan, mehr bilan ❤️",
+      ru: "Stilist Store — вместе с onagulim, с любовью ❤️",
+      en: "Stilist Store — with onagulim, with love ❤️",
+    },
+    marquee: {
+      uz: "Gel lak <i>❤</i> Apparatlar <i>❤</i> Frezalar <i>❤</i> Baza & Top <i>❤</i> Dizayn <i>❤</i> Sterilizatsiya <i>❤</i>",
+      ru: "Гель-лак <i>❤</i> Аппараты <i>❤</i> Фрезы <i>❤</i> База и топ <i>❤</i> Дизайн <i>❤</i> Стерилизация <i>❤</i>",
+      en: "Gel polish <i>❤</i> E-files <i>❤</i> Drill bits <i>❤</i> Base & Top <i>❤</i> Nail art <i>❤</i> Sterilization <i>❤</i>",
+    },
+  },
+
+  // ============ ЛЕТАЮЩИЕ ТОВАРЫ ============
+  // PNG-фото без фона из папки img. Добавить товар — допишите строку.
   productPhotos: [
     "img/top-coat.png",
     "img/base-gel.png",
@@ -255,10 +335,39 @@ const CONFIG = {
     z-index: 1;
     max-width: 430px;
     margin: 0 auto;
-    padding: clamp(40px, 8vh, 64px) 22px 48px;
+    padding: clamp(28px, 6vh, 48px) 22px 48px;
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  /* ---------- переключатель языков ---------- */
+  .lang-switch {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+  .lang-btn {
+    padding: 7px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--ink-dim);
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.25s var(--ease-out), background 0.25s var(--ease-out), color 0.25s var(--ease-out), border-color 0.25s var(--ease-out);
+  }
+  .lang-btn:hover { transform: translateY(-2px); color: var(--ink); }
+  .lang-btn.active {
+    background: linear-gradient(140deg, #f75fa8, #c22579);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(214, 45, 135, 0.35);
   }
 
   /* ---------- монограмма с вращающимся кольцом ---------- */
@@ -368,6 +477,21 @@ const CONFIG = {
     color: var(--ink-dim);
     text-align: center;
     max-width: 320px;
+  }
+  .delivery {
+    margin-top: 13px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 138, 196, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-size: 12.5px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--ink);
+    text-align: center;
+    max-width: 360px;
   }
 
   /* ---------- разделитель ---------- */
@@ -517,7 +641,7 @@ const CONFIG = {
   }
   .link-arrow svg { width: 18px; height: 18px; display: block; }
 
-  /* карточка-акцент (Instagram и мини-приложение) — заливка фуксией */
+  /* карточка-акцент — сочная фуксия с глянцем */
   .link-card.featured {
     background: linear-gradient(140deg, #f75fa8, #d62d87 55%, #9c1a66);
     background-size: 180% 180%;
@@ -615,6 +739,7 @@ const CONFIG = {
   .branch-card.featured .branch-pin svg { width: 20px; height: 20px; }
   .branch-card.featured .branch-actions { margin-top: 16px; }
   .branch-card.featured .chip { padding: 11px 16px; font-size: 13.5px; }
+
   .chip {
     display: inline-flex;
     align-items: center;
@@ -641,7 +766,7 @@ const CONFIG = {
     border: 1px solid rgba(255, 255, 255, 0.32);
     color: #ffffff;
   }
-  .chip-phone:hover { background: rgba(255, 235, 246, 0.16); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3); }
+  .chip-phone:hover { background: rgba(255, 255, 255, 0.2); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3); }
 
   /* ---------- бегущая строка ---------- */
   .marquee {
@@ -717,7 +842,7 @@ const CONFIG = {
     .floaty, .emblem, .title, .link-card::after, .link-card.featured,
     .divider .gem { animation: none; }
     .reveal { animation-duration: 0.01s; animation-delay: 0s; }
-    .link-card, .link-arrow, .chip { transition: none; }
+    .link-card, .link-arrow, .chip, .lang-btn { transition: none; }
   }
 </style>
 </head>
@@ -737,6 +862,12 @@ const CONFIG = {
 
 <main class="page">
 
+  <div class="lang-switch reveal" style="--i:0" id="lang-switch">
+    <button class="lang-btn" data-lang="uz">UZ</button>
+    <button class="lang-btn" data-lang="ru">RU</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+  </div>
+
   <div class="emblem reveal" style="--i:0">
     <svg class="emblem-ring" viewBox="0 0 148 148" aria-hidden="true">
       <defs>
@@ -750,28 +881,29 @@ const CONFIG = {
   </div>
 
   <h1 class="title reveal" style="--i:1"><span class="word">Stilist</span><span class="word">Store</span></h1>
-  <p class="subtitle reveal" style="--i:2">Manikyur &amp; Pedikyur narsalari</p>
-  <p class="tagline reveal" style="--i:3">Beauty masterlar uchun premium materiallar — Toshkent ❤️</p>
+  <p class="subtitle reveal" style="--i:2" id="subtitle"></p>
+  <p class="tagline reveal" style="--i:3" id="tagline"></p>
+  <p class="delivery reveal" style="--i:4" id="delivery"></p>
 
-  <div class="divider reveal" style="--i:4"><span class="gem"></span></div>
+  <div class="divider reveal" style="--i:5"><span class="gem"></span></div>
 
   <!-- Основные ссылки: заполняются из CONFIG -->
   <ul class="links" id="links"></ul>
 
   <!-- Филиалы: заполняются из CONFIG -->
-  <h2 class="section-title reveal" style="--i:9">Filiallarimiz</h2>
+  <h2 class="section-title reveal" style="--i:10" id="branches-title"></h2>
   <ul class="branches" id="branches"></ul>
 
-  <div class="marquee reveal" style="--i:12" aria-hidden="true">
+  <div class="marquee reveal" style="--i:13" aria-hidden="true">
     <div class="marquee-track">
-      <span>Gel lak <i>❤</i> Apparatlar <i>❤</i> Frezalar <i>❤</i> Baza &amp; Top <i>❤</i> Dizayn <i>❤</i> Sterilizatsiya <i>❤</i></span>
-      <span>Gel lak <i>❤</i> Apparatlar <i>❤</i> Frezalar <i>❤</i> Baza &amp; Top <i>❤</i> Dizayn <i>❤</i> Sterilizatsiya <i>❤</i></span>
+      <span class="marquee-text"></span>
+      <span class="marquee-text"></span>
     </div>
   </div>
 
   <footer class="footer">
-    <p class="hours reveal" style="--i:13" id="hours"></p>
-    <p class="made reveal" style="--i:14">Stilist Store — onagulim bilan, mehr bilan ❤️</p>
+    <p class="hours reveal" style="--i:14" id="hours"></p>
+    <p class="made reveal" style="--i:15" id="made"></p>
   </footer>
 
 </main>
@@ -792,7 +924,7 @@ const CONFIG = {
     cart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2.5 3.5h3l2.5 12h11l2.5-9h-15"/></svg>',
   };
 
-  /* --- рисованные товары в фирменном стиле --- */
+  /* --- рисованные товары в фирменном стиле (запасной вариант) --- */
   const PRODUCT_SVGS = {
     bottle:
       '<svg viewBox="0 0 64 100" fill="none">' +
@@ -843,12 +975,27 @@ const CONFIG = {
     { kind: 'heart',   x: '80%', y: '94%', size: 36, dur: 8,  delay: 1.8, rot: 14  },
   ];
 
+  /* --- языки --- */
+  const LANGS = ['uz', 'ru', 'en'];
+  let lang = 'uz';
+  try {
+    const saved = localStorage.getItem('ss-lang');
+    if (LANGS.indexOf(saved) !== -1) lang = saved;
+  } catch (e) {}
+
+  // t() — берёт текст на текущем языке; обычная строка работает для всех языков
+  function t(v) {
+    if (typeof v === 'string') return v;
+    return v[lang] || v.uz || v.ru || v.en || '';
+  }
+
+  /* --- летающие товары (рисуются один раз) --- */
   const floaties = document.getElementById('floaties');
   const photos = CONFIG.productPhotos || [];
   let photoIdx = 0;
-  FLOATY_SLOTS.forEach(function (s, i) {
+  FLOATY_SLOTS.forEach(function (s) {
     const el = document.createElement('div');
-    el.className = 'floaty' + (s.kind === 'sparkle' && photos.length === 0 ? ' sparkle' : '');
+    el.className = 'floaty' + (s.kind === 'sparkle' ? ' sparkle' : '');
     // фото товаров крупнее рисованных значков
     const size = (photos.length > 0 && s.kind !== 'sparkle') ? Math.round(s.size * 3.4) : s.size;
     el.style.left = s.x;
@@ -859,7 +1006,6 @@ const CONFIG = {
     el.style.setProperty('--delay', s.delay + 's');
     el.style.setProperty('--rot', s.rot + 'deg');
     if (photos.length > 0 && s.kind !== 'sparkle') {
-      // фото товаров: подставляются по кругу
       el.innerHTML = '<img src="' + photos[photoIdx % photos.length] + '" alt="">';
       photoIdx++;
     } else {
@@ -868,48 +1014,81 @@ const CONFIG = {
     floaties.appendChild(el);
   });
 
-  const links = document.getElementById('links');
-  (CONFIG.buttons || []).forEach(function (item, i) {
-    const li = document.createElement('li');
-    li.className = 'reveal';
-    li.style.setProperty('--i', 5 + i);
-    const sub = item.sub ? '<span class="link-sub">' + item.sub + '</span>' : '';
-    li.innerHTML =
-      '<a class="link-card' + (item.style === 'pink' ? ' featured' : '') + '" href="' + item.url + '" target="_blank" rel="noopener">' +
-        '<span class="link-icon" aria-hidden="true">' + (ICONS[item.icon] || ICONS.link) + '</span>' +
-        '<span class="link-text">' +
-          '<span class="link-title">' + item.title + '</span>' +
-          sub +
-        '</span>' +
-        '<span class="link-arrow" aria-hidden="true">' + ICONS.arrow + '</span>' +
-      '</a>';
-    links.appendChild(li);
+  /* --- рендер текстов и списков на выбранном языке --- */
+  function renderAll() {
+    document.documentElement.lang = lang;
+    document.getElementById('subtitle').textContent = t(CONFIG.texts.subtitle);
+    document.getElementById('tagline').textContent = t(CONFIG.texts.tagline);
+    document.getElementById('delivery').textContent = t(CONFIG.texts.delivery);
+    document.getElementById('branches-title').textContent = t(CONFIG.texts.branchesTitle);
+    document.getElementById('made').textContent = t(CONFIG.texts.made);
+    document.getElementById('hours').innerHTML =
+      t(CONFIG.workingHours).replace(/(\d{2}:\d{2}\s*—\s*\d{2}:\d{2})/, '<b>$1</b>');
+    document.querySelectorAll('.marquee-text').forEach(function (el) {
+      el.innerHTML = t(CONFIG.texts.marquee);
+    });
+
+    // активная кнопка языка
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    // кнопки-ссылки
+    const links = document.getElementById('links');
+    links.innerHTML = '';
+    (CONFIG.buttons || []).forEach(function (item, i) {
+      const li = document.createElement('li');
+      li.className = 'reveal';
+      li.style.setProperty('--i', 6 + i);
+      const sub = item.sub ? '<span class="link-sub">' + t(item.sub) + '</span>' : '';
+      li.innerHTML =
+        '<a class="link-card' + (item.style === 'pink' ? ' featured' : '') + '" href="' + item.url + '" target="_blank" rel="noopener">' +
+          '<span class="link-icon" aria-hidden="true">' + (ICONS[item.icon] || ICONS.link) + '</span>' +
+          '<span class="link-text">' +
+            '<span class="link-title">' + t(item.title) + '</span>' +
+            sub +
+          '</span>' +
+          '<span class="link-arrow" aria-hidden="true">' + ICONS.arrow + '</span>' +
+        '</a>';
+      links.appendChild(li);
+    });
+
+    // филиалы
+    const branches = document.getElementById('branches');
+    branches.innerHTML = '';
+    (CONFIG.branches || []).forEach(function (b, i) {
+      const li = document.createElement('li');
+      li.className = 'reveal';
+      li.style.setProperty('--i', 11 + i);
+      const phones = b.phones.map(function (p) {
+        return '<a class="chip chip-phone" href="tel:' + p.replace(/[^+\d]/g, '') + '">' + ICONS.phone + p + '</a>';
+      }).join('');
+      li.innerHTML =
+        '<div class="branch-card' + (b.featured ? ' featured' : '') + '">' +
+          '<div class="branch-head">' +
+            '<span class="branch-pin" aria-hidden="true">' + ICONS.pin + '</span>' +
+            '<div><div class="branch-name">' + t(b.name) + '</div>' +
+            '<div class="branch-address">' + t(b.address) + '</div></div>' +
+          '</div>' +
+          '<div class="branch-actions">' +
+            '<a class="chip chip-map" href="' + b.mapUrl + '" target="_blank" rel="noopener">' + ICONS.pin + t(CONFIG.texts.mapChip) + '</a>' +
+            phones +
+          '</div>' +
+        '</div>';
+      branches.appendChild(li);
+    });
+  }
+
+  /* --- переключатель языка --- */
+  document.getElementById('lang-switch').addEventListener('click', function (e) {
+    const btn = e.target.closest('.lang-btn');
+    if (!btn) return;
+    lang = btn.dataset.lang;
+    try { localStorage.setItem('ss-lang', lang); } catch (err) {}
+    renderAll();
   });
 
-  const branches = document.getElementById('branches');
-  CONFIG.branches.forEach(function (b, i) {
-    const li = document.createElement('li');
-    li.className = 'reveal';
-    li.style.setProperty('--i', 10 + i);
-    const phones = b.phones.map(function (p) {
-      return '<a class="chip chip-phone" href="tel:' + p.replace(/[^+\d]/g, '') + '">' + ICONS.phone + p + '</a>';
-    }).join('');
-    li.innerHTML =
-      '<div class="branch-card' + (b.featured ? ' featured' : '') + '">' +
-        '<div class="branch-head">' +
-          '<span class="branch-pin" aria-hidden="true">' + ICONS.pin + '</span>' +
-          '<div><div class="branch-name">' + b.name + '</div>' +
-          '<div class="branch-address">' + b.address + '</div></div>' +
-        '</div>' +
-        '<div class="branch-actions">' +
-          '<a class="chip chip-map" href="' + b.mapUrl + '" target="_blank" rel="noopener">' + ICONS.pin + 'Xaritada ochish</a>' +
-          phones +
-        '</div>' +
-      '</div>';
-    branches.appendChild(li);
-  });
-
-  document.getElementById('hours').innerHTML = CONFIG.workingHours.replace(/(\d{2}:\d{2}\s*—\s*\d{2}:\d{2})/, '<b>$1</b>');
+  renderAll();
 })();
 </script>
 
