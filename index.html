@@ -169,10 +169,7 @@ const CONFIG = {
     "img/top-coat.png",
     "img/base-gel.png",
     "img/lampa.png",
-    "img/formy.png",
-    "img/pilka.png",
     "img/formy-black.png",
-    "img/gel-soft.png",
     "img/gel-slivochny.png",
     "img/gel-rozoviy.png",
     "img/pilka-100-180.png",
@@ -313,7 +310,10 @@ const CONFIG = {
     height: 100%;
     object-fit: contain;
     display: block;
+    opacity: 0;
+    transition: opacity 0.8s var(--ease-out);
   }
+  .floaty img.loaded { opacity: 1; }
   .floaty svg { display: block; width: 100%; height: 100%; }
   @keyframes floaty-bob {
     from { transform: translateY(0) rotate(var(--rot, 0deg)); }
@@ -967,17 +967,14 @@ const CONFIG = {
     { kind: 'bottle',  x: '2%',  y: '4%',  size: 40, dur: 9,  delay: 0,   rot: -14 },
     { kind: 'sparkle', x: '22%', y: '2%',  size: 22, dur: 14, delay: 1,   rot: 0   },
     { kind: 'drop',    x: '82%', y: '3%',  size: 36, dur: 8,  delay: 0.5, rot: 10  },
-    { kind: 'file',    x: '88%', y: '18%', size: 42, dur: 10, delay: 1.2, rot: 22  },
-    { kind: 'heart',   x: '1%',  y: '21%', size: 38, dur: 7,  delay: 0.8, rot: -8  },
-    { kind: 'bottle',  x: '86%', y: '35%', size: 38, dur: 11, delay: 0.4, rot: 16  },
-    { kind: 'drop',    x: '3%',  y: '39%', size: 40, dur: 9,  delay: 1.6, rot: -12 },
-    { kind: 'sparkle', x: '91%', y: '50%', size: 18, dur: 12, delay: 0,   rot: 0   },
-    { kind: 'heart',   x: '2%',  y: '57%', size: 38, dur: 8,  delay: 1,   rot: 12  },
-    { kind: 'bottle',  x: '87%', y: '62%', size: 40, dur: 10, delay: 0.6, rot: -10 },
-    { kind: 'drop',    x: '4%',  y: '75%', size: 36, dur: 9,  delay: 1.4, rot: 8   },
+    { kind: 'file',    x: '88%', y: '22%', size: 42, dur: 10, delay: 1.2, rot: 22  },
+    { kind: 'heart',   x: '1%',  y: '26%', size: 38, dur: 7,  delay: 0.8, rot: -8  },
+    { kind: 'bottle',  x: '86%', y: '46%', size: 38, dur: 11, delay: 0.4, rot: 16  },
+    { kind: 'drop',    x: '3%',  y: '52%', size: 40, dur: 9,  delay: 1.6, rot: -12 },
+    { kind: 'sparkle', x: '91%', y: '62%', size: 18, dur: 12, delay: 0,   rot: 0   },
+    { kind: 'heart',   x: '2%',  y: '76%', size: 38, dur: 8,  delay: 1,   rot: 12  },
     { kind: 'sparkle', x: '14%', y: '92%', size: 24, dur: 15, delay: 2,   rot: 0   },
-    { kind: 'file',    x: '85%', y: '80%', size: 42, dur: 11, delay: 0.9, rot: -18 },
-    { kind: 'heart',   x: '80%', y: '94%', size: 36, dur: 8,  delay: 1.8, rot: 14  },
+    { kind: 'file',    x: '85%', y: '84%', size: 42, dur: 11, delay: 0.9, rot: -18 },
   ];
 
   /* --- языки --- */
@@ -1014,7 +1011,13 @@ const CONFIG = {
     el.style.setProperty('--delay', s.delay + 's');
     el.style.setProperty('--rot', s.rot + 'deg');
     if (photos.length > 0 && s.kind !== 'sparkle') {
-      el.innerHTML = '<img src="' + photos[photoIdx % photos.length] + '" alt="">';
+      const img = document.createElement('img');
+      img.decoding = 'async';
+      img.alt = '';
+      img.onload = function () { img.classList.add('loaded'); };
+      img.src = photos[photoIdx % photos.length];
+      if (img.complete) img.classList.add('loaded');
+      el.appendChild(img);
       photoIdx++;
     } else {
       el.innerHTML = PRODUCT_SVGS[s.kind];
