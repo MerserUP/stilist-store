@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Stilist Store — manikyur & pedikyur narsalari, Toshkent</title>
+<meta name="description" content="Stilist Store — beauty masterlar uchun premium manikyur va pedikyur materiallari. Toshkent.">
+<meta property="og:title" content="Stilist Store">
+<meta property="og:description" content="Manikyur & pedikyur narsalari — Toshkent ❤️">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ultra&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/cooper-black" rel="stylesheet">
+
+<script>
+/* ============================================================
+   ⭐ НАСТРОЙКИ — редактируйте только этот блок!
+   Поменяли ссылку/номер/адрес здесь — страница обновится сама.
+   ============================================================ */
+const CONFIG = {
+
+  // ============ КНОПКИ ============
+  // Чтобы ДОБАВИТЬ кнопку — скопируйте блок { ... }, (с фигурными
+  // скобками и запятой) и вставьте в нужное место списка.
+  // Порядок в списке = порядок на странице.
+  //
+  //   icon:  "instagram" | "telegram" | "catalog" | "phone" | "pin" | "link" | "heart" | "star" | "cart"
+  //   style: "pink"  — яркая фирменная кнопка
+  //          "glass" — спокойная стеклянная кнопка
+  //   url:   куда ведёт кнопка
+  //   title: большая надпись
+  //   sub:   маленькая надпись под ней (можно оставить "")
+  buttons: [
+    {
+      icon: "instagram",
+      style: "pink",
+      url: "https://www.instagram.com/stilist_store/",
+      title: "Instagram — @stilist_store",
+      sub: "Yangi mahsulotlar va aksiyalar",
+    },
+    {
+      icon: "catalog",
+      style: "pink",
+      url: "https://t.me/stiliss_bot",
+      title: "Katalog — buyurtma berish",
+      sub: "Telegram botda tanlang va buyurtma qiling",
+    },
+    {
+      icon: "link",
+      style: "glass",
+      url: "https://stilis.uz",
+      title: "Sayt — stilis.uz",
+      sub: "Butun O'zbekiston bo'ylab yetkazib berish",
+    },
+    {
+      icon: "telegram",
+      style: "glass",
+      url: "https://t.me/stiliststore",
+      title: "Telegram kanal",
+      sub: "Yangiliklar va narxlar",
+    },
+  ],
+
+  // --- Филиалы: можно добавлять сколько угодно, просто копируйте блок { ... }, ---
+  branches: [
+    {
+      name: "Parkent filiali",
+      address: "Parkent, Toshkent",
+      mapUrl: "https://yandex.com/maps/org/stylist_stilist_store/99555696405/",
+      phones: ["+998 99 729-81-52"],
+      featured: true,        // главный филиал — карточка крупнее и ярче
+    },
+    {
+      name: "TTZ-1 filiali",
+      address: "TTZ 1-jilmassiv, Toshkent",
+      mapUrl: "https://yandex.uz/maps/-/CTeBMHIG",
+      phones: ["+998 77 961-20-20"],
+    },
+  ],
+
+  // --- Режим работы ---
+  workingHours: "Har kuni 08:00 — 21:00",
+
+  // --- Летающие товары ---
+  // PNG-фото товаров без фона из папки img.
+  // Добавить товар: положите фото в папку img и допишите строку сюда.
+  // Если список пуст — летают рисованные флаконы.
+  productPhotos: [
+    "img/top-coat.png",
+    "img/base-gel.png",
+    "img/lampa.png",
+    "img/formy.png",
+    "img/pilka.png",
+    "img/formy-black.png",
+    "img/gel-soft.png",
+    "img/gel-slivochny.png",
+    "img/gel-rozoviy.png",
+    "img/pilka-100-180.png",
+    "img/pilka-mint.png",
+  ],
+};
+/* ============================================================
+   Конец настроек. Ниже — дизайн, его трогать не нужно.
+   ============================================================ */
+</script>
+
+<style>
+  :root {
+    --bg: #140510;
+    --ink: #ffeef7;
+    --ink-dim: rgba(255, 238, 247, 0.6);
+    --ink-faint: rgba(255, 238, 247, 0.35);
+    --fx: #ec4b9d;
+    --fx-bright: #ff8ac4;
+    --fx-deep: #a91464;
+    --card: linear-gradient(150deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08));
+    --card-border: rgba(255, 255, 255, 0.3);
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    /* фирменный шрифт Cooper Black (веб-шрифт с CDN); запасной — Ultra */
+    --display: 'Cooper Black', 'Cooper Std', 'Cooper BT', 'Ultra', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Manrope', system-ui, sans-serif;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- фон: чёрные переливы + аврора + зерно ---------- */
+  .backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: -2; /* самый задний план */
+    pointer-events: none;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .iridescent {
+    position: absolute;
+    inset: -30%;
+    z-index: -1; /* перелив — глубже всех слоёв фона */
+    opacity: 0.9;
+    background: linear-gradient(115deg,
+      #0a020a 0%,
+      #2b0a26 18%,
+      #0d030d 36%,
+      #571041 52%,
+      #16040f 68%,
+      #33082a 84%,
+      #0a020a 100%);
+    background-size: 300% 300%;
+    animation: iridescent-shift 18s ease-in-out infinite alternate;
+  }
+  @keyframes iridescent-shift {
+    0%   { background-position: 0% 30%; }
+    50%  { background-position: 60% 70%; }
+    100% { background-position: 100% 40%; }
+  }
+  .aurora {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+  }
+  .aurora-1 {
+    width: 58vmax; height: 58vmax;
+    top: -24vmax; left: -18vmax;
+    background: radial-gradient(circle, rgba(236, 75, 157, 0.32), transparent 65%);
+    animation: drift-1 24s var(--ease-out) infinite alternate;
+  }
+  .aurora-2 {
+    width: 48vmax; height: 48vmax;
+    bottom: -20vmax; right: -15vmax;
+    background: radial-gradient(circle, rgba(120, 20, 100, 0.4), transparent 65%);
+    animation: drift-2 30s var(--ease-out) infinite alternate;
+  }
+  .aurora-3 {
+    width: 32vmax; height: 32vmax;
+    top: 36%; left: 56%;
+    background: radial-gradient(circle, rgba(255, 138, 196, 0.16), transparent 60%);
+    animation: drift-3 20s ease-in-out infinite alternate;
+  }
+  @keyframes drift-1 { to { transform: translate(9vmax, 7vmax) scale(1.15); } }
+  @keyframes drift-2 { to { transform: translate(-7vmax, -9vmax) scale(1.1); } }
+  @keyframes drift-3 { to { transform: translate(-10vmax, 5vmax); } }
+
+  .vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(120% 90% at 50% 15%, transparent 35%, rgba(5, 1, 4, 0.75) 100%);
+  }
+  .grain {
+    position: absolute;
+    inset: -50%;
+    width: 200%; height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.05;
+    animation: grain-shift 0.9s steps(4) infinite;
+  }
+  @keyframes grain-shift {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-2%, 3%); }
+    50% { transform: translate(3%, -2%); }
+    75% { transform: translate(-3%, -3%); }
+    100% { transform: translate(2%, 2%); }
+  }
+
+  /* ---------- летающие товары ---------- */
+  .floaties {
+    position: fixed;
+    inset: 0;
+    z-index: -1; /* товары над фоном, но под контентом */
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .floaty {
+    position: absolute;
+    opacity: 1;
+    filter: drop-shadow(0 12px 28px rgba(236, 75, 157, 0.45));
+    animation:
+      floaty-bob var(--dur, 8s) ease-in-out var(--delay, 0s) infinite alternate,
+      floaty-sway calc(var(--dur, 8s) * 1.6) ease-in-out var(--delay, 0s) infinite alternate;
+    will-change: transform;
+  }
+  .floaty img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .floaty svg { display: block; width: 100%; height: 100%; }
+  @keyframes floaty-bob {
+    from { transform: translateY(0) rotate(var(--rot, 0deg)); }
+    to   { transform: translateY(-26px) rotate(calc(var(--rot, 0deg) + 8deg)); }
+  }
+  @keyframes floaty-sway {
+    from { margin-left: 0; }
+    to   { margin-left: 14px; }
+  }
+  .floaty.sparkle {
+    animation: sparkle-spin var(--dur, 10s) linear infinite, sparkle-pulse 3s ease-in-out var(--delay, 0s) infinite alternate;
+  }
+  @keyframes sparkle-spin { to { transform: rotate(360deg); } }
+  @keyframes sparkle-pulse { from { opacity: 0.35; } to { opacity: 0.9; } }
+
+  /* ---------- каркас ---------- */
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 430px;
+    margin: 0 auto;
+    padding: clamp(40px, 8vh, 64px) 22px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ---------- монограмма с вращающимся кольцом ---------- */
+  .emblem {
+    position: relative;
+    width: 118px;
+    height: 118px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 22px;
+    animation: emblem-bob 6s ease-in-out infinite alternate;
+  }
+  @keyframes emblem-bob { to { transform: translateY(-8px); } }
+  .emblem-ring {
+    position: absolute;
+    inset: 0;
+    animation: spin 40s linear infinite;
+    transform-origin: center;
+  }
+  .emblem-ring text {
+    font-family: 'Manrope', sans-serif;
+    font-size: 8.6px;
+    font-weight: 700;
+    letter-spacing: 3.4px;
+    fill: var(--ink-faint);
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .emblem-core {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background:
+      radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.95), transparent 60%),
+      linear-gradient(160deg, #ffffff, #ffd9ec);
+    border: 1px solid rgba(255, 138, 196, 0.5);
+    box-shadow:
+      0 0 0 7px rgba(236, 75, 157, 0.1),
+      0 20px 44px rgba(0, 0, 0, 0.5),
+      0 0 40px rgba(236, 75, 157, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+  .emblem-core span {
+    font-family: var(--display);
+    font-size: 36px;
+    line-height: 1;
+    padding-bottom: 4px;
+    background: linear-gradient(155deg, var(--fx-bright) 10%, var(--fx) 50%, var(--fx-deep) 95%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ---------- заголовок: перелив внутри букв ---------- */
+  .title {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(52px, 16vw, 72px);
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 0.92;
+    letter-spacing: 1px;
+    background: linear-gradient(120deg,
+      var(--fx-bright) 0%, var(--fx) 25%, #ffc2de 50%, var(--fx) 75%, var(--fx-bright) 100%);
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 6px 26px rgba(236, 75, 157, 0.45));
+    animation: title-shimmer 7s ease-in-out infinite alternate;
+  }
+  @keyframes title-shimmer {
+    from { background-position: 0% 0; }
+    to   { background-position: 100% 0; }
+  }
+  .title .word { display: block; }
+  .title .word:last-child {
+    font-size: 0.72em;
+    letter-spacing: 0.14em;
+  }
+  .subtitle {
+    margin-top: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: rgba(255, 235, 246, 0.08);
+    border: 1px solid rgba(255, 138, 196, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 2.6px;
+    text-transform: uppercase;
+    color: var(--fx-bright);
+    text-align: center;
+  }
+  .tagline {
+    margin-top: 13px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--ink-dim);
+    text-align: center;
+    max-width: 320px;
+  }
+
+  /* ---------- разделитель ---------- */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin: 28px 0 24px;
+  }
+  .divider::before,
+  .divider::after {
+    content: '';
+    flex: 1;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, rgba(255, 138, 196, 0.45));
+    border-radius: 2px;
+  }
+  .divider::after {
+    background: linear-gradient(90deg, rgba(255, 138, 196, 0.45), transparent);
+  }
+  .divider .gem {
+    width: 11px;
+    height: 11px;
+    background: linear-gradient(135deg, var(--fx-bright), var(--fx-deep));
+    clip-path: path('M5.5 10.3 C 1.2 7, 0 4.7, 1.1 2.8 C 2.2 0.9, 4.4 0.8, 5.5 2.5 C 6.6 0.8, 8.8 0.9, 9.9 2.8 C 11 4.7, 9.8 7, 5.5 10.3 Z');
+    filter: drop-shadow(0 0 8px rgba(236, 75, 157, 0.7));
+    animation: gem-beat 2.4s ease-in-out infinite;
+  }
+  @keyframes gem-beat {
+    0%, 100% { transform: scale(1); }
+    12% { transform: scale(1.25); }
+    24% { transform: scale(1); }
+    36% { transform: scale(1.18); }
+    48% { transform: scale(1); }
+  }
+
+  /* ---------- заголовок секции ---------- */
+  .section-title {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--fx-bright);
+    margin: 26px 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::before,
+  .section-title::after {
+    content: '❤';
+    font-size: 11px;
+    color: var(--fx);
+  }
+
+  /* ---------- ссылки ---------- */
+  .links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    list-style: none;
+  }
+  .link-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 17px 18px;
+    border-radius: 20px;
+    background: var(--card);
+    border: 1.5px solid var(--card-border);
+    text-decoration: none;
+    color: var(--ink);
+    overflow: hidden;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    transition: transform 0.35s var(--ease-out), border-color 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), background 0.35s var(--ease-out);
+  }
+  .link-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 55%;
+    height: 100%;
+    background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+    transform: skewX(-18deg);
+    animation: card-sheen 6s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes card-sheen {
+    0%, 55% { left: -80%; }
+    75%, 100% { left: 130%; }
+  }
+  .link-card:hover,
+  .link-card:focus-visible {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.5);
+    background: linear-gradient(150deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.12));
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  .link-card:active { transform: translateY(-1px) scale(0.99); }
+
+  .link-icon {
+    flex: none;
+    width: 46px;
+    height: 46px;
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    color: #ffffff;
+  }
+  .link-icon svg { width: 21px; height: 21px; }
+
+  .link-text { flex: 1; min-width: 0; }
+  .link-title {
+    display: block;
+    font-size: 15.5px;
+    font-weight: 700;
+    letter-spacing: 0.1px;
+  }
+  .link-sub {
+    display: block;
+    margin-top: 4px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--ink-dim);
+    letter-spacing: 0.3px;
+  }
+
+  .link-arrow {
+    flex: none;
+    color: var(--ink-faint);
+    transition: transform 0.35s var(--ease-out), color 0.35s var(--ease-out);
+  }
+  .link-card:hover .link-arrow,
+  .link-card:focus-visible .link-arrow {
+    transform: translateX(4px);
+    color: var(--fx-bright);
+  }
+  .link-arrow svg { width: 18px; height: 18px; display: block; }
+
+  /* карточка-акцент (Instagram и мини-приложение) — заливка фуксией */
+  .link-card.featured {
+    background: linear-gradient(140deg, #f75fa8, #d62d87 55%, #9c1a66);
+    background-size: 180% 180%;
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 0 6px 24px rgba(214, 45, 135, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    animation: featured-flow 8s ease-in-out infinite alternate;
+  }
+  @keyframes featured-flow {
+    from { background-position: 0% 30%; }
+    to   { background-position: 100% 70%; }
+  }
+  .link-card.featured .link-title { color: #fff; }
+  .link-card.featured .link-sub { color: rgba(255, 255, 255, 0.85); }
+  .link-card.featured .link-icon {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
+  }
+  .link-card.featured .link-arrow { color: rgba(255, 255, 255, 0.8); }
+  .link-card.featured:hover .link-arrow { color: #fff; }
+  .link-card.featured:hover {
+    background: linear-gradient(140deg, #ff6fb2, #e23590 55%, #a71e6d);
+    background-size: 180% 180%;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 10px 30px rgba(214, 45, 135, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  }
+
+  /* ---------- филиалы ---------- */
+  .branches {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    list-style: none;
+  }
+  .branch-card {
+    padding: 18px;
+    border-radius: 20px;
+    background: var(--card);
+    border: 1.5px solid var(--card-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  .branch-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .branch-pin {
+    flex: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    color: #ffffff;
+  }
+  .branch-pin svg { width: 17px; height: 17px; }
+  .branch-name {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.1px;
+  }
+  .branch-address {
+    margin-top: 2px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--ink-dim);
+  }
+  .branch-actions {
+    margin-top: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* главный филиал — крупнее и с фирменным акцентом */
+  .branch-card.featured {
+    padding: 24px 20px;
+    background: linear-gradient(150deg, rgba(247, 95, 168, 0.16), rgba(255, 255, 255, 0.07));
+    border-color: rgba(247, 95, 168, 0.45);
+  }
+  .branch-card.featured .branch-name { font-size: 18px; }
+  .branch-card.featured .branch-address { font-size: 13.5px; }
+  .branch-card.featured .branch-pin {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(140deg, #f75fa8, #c22579);
+    border-color: transparent;
+  }
+  .branch-card.featured .branch-pin svg { width: 20px; height: 20px; }
+  .branch-card.featured .branch-actions { margin-top: 16px; }
+  .branch-card.featured .chip { padding: 11px 16px; font-size: 13.5px; }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 14px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), background 0.25s var(--ease-out);
+  }
+  .chip svg { width: 14px; height: 14px; }
+  .chip:hover { transform: translateY(-2px); }
+  .chip:active { transform: translateY(0) scale(0.98); }
+  .chip-map {
+    background: linear-gradient(140deg, #f75fa8, #c22579);
+    color: #fff;
+    box-shadow: 0 5px 16px rgba(214, 45, 135, 0.3);
+  }
+  .chip-map:hover { box-shadow: 0 8px 22px rgba(214, 45, 135, 0.4); }
+  .chip-phone {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    color: #ffffff;
+  }
+  .chip-phone:hover { background: rgba(255, 235, 246, 0.16); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3); }
+
+  /* ---------- бегущая строка ---------- */
+  .marquee {
+    width: 100vw;
+    margin: 34px 0 6px;
+    padding: 13px 0;
+    border-top: 1.5px solid rgba(255, 138, 196, 0.2);
+    border-bottom: 1.5px solid rgba(255, 138, 196, 0.2);
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 34px;
+    width: max-content;
+    animation: marquee 26s linear infinite;
+  }
+  .marquee-track span {
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 34px;
+  }
+  .marquee-track i {
+    font-style: normal;
+    color: var(--fx);
+    font-size: 11px;
+  }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+
+  /* ---------- футер ---------- */
+  .footer {
+    margin-top: 26px;
+    text-align: center;
+  }
+  .hours {
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .hours b {
+    color: var(--fx-bright);
+    font-weight: 800;
+  }
+  .made {
+    margin-top: 14px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- вход: стаггер ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    animation: rise 0.9s var(--ease-out) forwards;
+    animation-delay: calc(var(--i, 0) * 90ms);
+  }
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aurora, .grain, .emblem-ring, .marquee-track, .iridescent,
+    .floaty, .emblem, .title, .link-card::after, .link-card.featured,
+    .divider .gem { animation: none; }
+    .reveal { animation-duration: 0.01s; animation-delay: 0s; }
+    .link-card, .link-arrow, .chip { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="backdrop" aria-hidden="true">
+  <div class="iridescent"></div>
+  <div class="aurora aurora-1"></div>
+  <div class="aurora aurora-2"></div>
+  <div class="aurora aurora-3"></div>
+  <div class="vignette"></div>
+  <div class="grain"></div>
+</div>
+
+<!-- Летающие товары (заполняется скриптом) -->
+<div class="floaties" id="floaties" aria-hidden="true"></div>
+
+<main class="page">
+
+  <div class="emblem reveal" style="--i:0">
+    <svg class="emblem-ring" viewBox="0 0 148 148" aria-hidden="true">
+      <defs>
+        <path id="ring-path" d="M 74,74 m -62,0 a 62,62 0 1,1 124,0 a 62,62 0 1,1 -124,0"/>
+      </defs>
+      <text>
+        <textPath href="#ring-path">STILIST STORE&#160;&#160;•&#160;&#160;TOSHKENT&#160;&#160;•&#160;&#160;MANIKYUR&#160;&#160;•&#160;&#160;PEDIKYUR&#160;&#160;•&#160;&#160;</textPath>
+      </text>
+    </svg>
+    <div class="emblem-core"><span>S</span></div>
+  </div>
+
+  <h1 class="title reveal" style="--i:1"><span class="word">Stilist</span><span class="word">Store</span></h1>
+  <p class="subtitle reveal" style="--i:2">Manikyur &amp; Pedikyur narsalari</p>
+  <p class="tagline reveal" style="--i:3">Beauty masterlar uchun premium materiallar — Toshkent ❤️</p>
+
+  <div class="divider reveal" style="--i:4"><span class="gem"></span></div>
+
+  <!-- Основные ссылки: заполняются из CONFIG -->
+  <ul class="links" id="links"></ul>
+
+  <!-- Филиалы: заполняются из CONFIG -->
+  <h2 class="section-title reveal" style="--i:9">Filiallarimiz</h2>
+  <ul class="branches" id="branches"></ul>
+
+  <div class="marquee reveal" style="--i:12" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Gel lak <i>❤</i> Apparatlar <i>❤</i> Frezalar <i>❤</i> Baza &amp; Top <i>❤</i> Dizayn <i>❤</i> Sterilizatsiya <i>❤</i></span>
+      <span>Gel lak <i>❤</i> Apparatlar <i>❤</i> Frezalar <i>❤</i> Baza &amp; Top <i>❤</i> Dizayn <i>❤</i> Sterilizatsiya <i>❤</i></span>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p class="hours reveal" style="--i:13" id="hours"></p>
+    <p class="made reveal" style="--i:14">Stilist Store — onagulim bilan, mehr bilan ❤️</p>
+  </footer>
+
+</main>
+
+<script>
+/* Рендер страницы из CONFIG — этот код трогать не нужно */
+(function () {
+  const ICONS = {
+    instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>',
+    telegram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 3.5 2.9 10.7c-1 .4-1 1.5.1 1.8l4.6 1.4 1.7 5.3c.3.9 1.3 1.1 1.9.4l2.5-2.7 4.8 3.5c.8.6 1.9.2 2.1-.8l3-14.2c.2-1.1-.8-1.9-2.1-1.9z" transform="scale(0.92) translate(1,1)"/><path d="M8 14l9.5-8.5"/></svg>',
+    catalog: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.5h12a1.5 1.5 0 0 1 1.5 1.5v16a1.5 1.5 0 0 1-1.5 1.5H6A1.5 1.5 0 0 1 4.5 20V4A1.5 1.5 0 0 1 6 2.5z"/><path d="M8.5 7h7M8.5 11h7M8.5 15h4"/></svg>',
+    pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.5s7-6.2 7-11.5a7 7 0 1 0-14 0c0 5.3 7 11.5 7 11.5z"/><circle cx="12" cy="9.8" r="2.6"/></svg>',
+    phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16.5v3a2 2 0 0 1-2.2 2A19.5 19.5 0 0 1 2.5 5.2 2 2 0 0 1 4.5 3h3a2 2 0 0 1 2 1.7c.13.96.37 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.6 10.75a16 16 0 0 0 4.65 4.65l1.15-1.15a2 2 0 0 1 2.1-.45c.9.33 1.84.57 2.8.7a2 2 0 0 1 1.7 2z"/></svg>',
+    arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+    link: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13.5a5 5 0 0 0 7.1 0l3-3a5 5 0 0 0-7.1-7.1l-1.7 1.7"/><path d="M14 10.5a5 5 0 0 0-7.1 0l-3 3a5 5 0 0 0 7.1 7.1l1.7-1.7"/></svg>',
+    heart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5C4.5 15.5 2 11.5 3.5 8 5 4.7 9 4.2 12 7.5 15 4.2 19 4.7 20.5 8 22 11.5 19.5 15.5 12 20.5z"/></svg>',
+    star: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l2.9 6 6.6 1-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-1z"/></svg>',
+    cart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2.5 3.5h3l2.5 12h11l2.5-9h-15"/></svg>',
+  };
+
+  /* --- рисованные товары в фирменном стиле --- */
+  const PRODUCT_SVGS = {
+    bottle:
+      '<svg viewBox="0 0 64 100" fill="none">' +
+      '<defs><linearGradient id="pg1" x1="0" y1="0" x2="1" y2="1">' +
+      '<stop offset="0" stop-color="#ff8ac4"/><stop offset="1" stop-color="#a91464"/></linearGradient></defs>' +
+      '<rect x="24" y="4" width="16" height="20" rx="4" fill="#3d0b2c" stroke="#ff8ac4" stroke-opacity="0.5"/>' +
+      '<rect x="27" y="24" width="10" height="8" fill="#5c1242"/>' +
+      '<rect x="12" y="32" width="40" height="62" rx="14" fill="url(#pg1)"/>' +
+      '<ellipse cx="24" cy="48" rx="6" ry="12" fill="#ffffff" opacity="0.35"/></svg>',
+    file:
+      '<svg viewBox="0 0 28 110" fill="none">' +
+      '<defs><linearGradient id="pg2" x1="0" y1="0" x2="0" y2="1">' +
+      '<stop offset="0" stop-color="#ffb8da"/><stop offset="1" stop-color="#ec4b9d"/></linearGradient></defs>' +
+      '<rect x="4" y="4" width="20" height="102" rx="10" fill="url(#pg2)"/>' +
+      '<rect x="8" y="10" width="4" height="90" rx="2" fill="#ffffff" opacity="0.3"/></svg>',
+    drop:
+      '<svg viewBox="0 0 60 74" fill="none">' +
+      '<defs><linearGradient id="pg3" x1="0" y1="0" x2="1" y2="1">' +
+      '<stop offset="0" stop-color="#ff8ac4"/><stop offset="1" stop-color="#c22579"/></linearGradient></defs>' +
+      '<path d="M30 4 C40 24, 56 36, 56 50 a26 24 0 1 1 -52 0 C4 36, 20 24, 30 4z" fill="url(#pg3)"/>' +
+      '<ellipse cx="21" cy="46" rx="5" ry="9" fill="#ffffff" opacity="0.4"/></svg>',
+    heart:
+      '<svg viewBox="0 0 64 58" fill="none">' +
+      '<defs><linearGradient id="pg4" x1="0" y1="0" x2="1" y2="1">' +
+      '<stop offset="0" stop-color="#ff8ac4"/><stop offset="1" stop-color="#a91464"/></linearGradient></defs>' +
+      '<path d="M32 56 C10 40, 2 28, 6 16 C10 5, 24 3, 32 14 C40 3, 54 5, 58 16 C62 28, 54 40, 32 56z" fill="url(#pg4)"/>' +
+      '<ellipse cx="20" cy="19" rx="5" ry="7" fill="#ffffff" opacity="0.35" transform="rotate(-25 20 19)"/></svg>',
+    sparkle:
+      '<svg viewBox="0 0 48 48" fill="none">' +
+      '<path d="M24 2 L28 20 L46 24 L28 28 L24 46 L20 28 L2 24 L20 20 Z" fill="#ffc2de"/></svg>',
+  };
+
+  /* --- расстановка летающих элементов: позиции по краям, центр свободен --- */
+  const FLOATY_SLOTS = [
+    { kind: 'bottle',  x: '2%',  y: '4%',  size: 40, dur: 9,  delay: 0,   rot: -14 },
+    { kind: 'sparkle', x: '22%', y: '2%',  size: 22, dur: 14, delay: 1,   rot: 0   },
+    { kind: 'drop',    x: '82%', y: '3%',  size: 36, dur: 8,  delay: 0.5, rot: 10  },
+    { kind: 'file',    x: '88%', y: '18%', size: 42, dur: 10, delay: 1.2, rot: 22  },
+    { kind: 'heart',   x: '1%',  y: '21%', size: 38, dur: 7,  delay: 0.8, rot: -8  },
+    { kind: 'bottle',  x: '86%', y: '35%', size: 38, dur: 11, delay: 0.4, rot: 16  },
+    { kind: 'drop',    x: '3%',  y: '39%', size: 40, dur: 9,  delay: 1.6, rot: -12 },
+    { kind: 'sparkle', x: '91%', y: '50%', size: 18, dur: 12, delay: 0,   rot: 0   },
+    { kind: 'heart',   x: '2%',  y: '57%', size: 38, dur: 8,  delay: 1,   rot: 12  },
+    { kind: 'bottle',  x: '87%', y: '62%', size: 40, dur: 10, delay: 0.6, rot: -10 },
+    { kind: 'drop',    x: '4%',  y: '75%', size: 36, dur: 9,  delay: 1.4, rot: 8   },
+    { kind: 'sparkle', x: '14%', y: '92%', size: 24, dur: 15, delay: 2,   rot: 0   },
+    { kind: 'file',    x: '85%', y: '80%', size: 42, dur: 11, delay: 0.9, rot: -18 },
+    { kind: 'heart',   x: '80%', y: '94%', size: 36, dur: 8,  delay: 1.8, rot: 14  },
+  ];
+
+  const floaties = document.getElementById('floaties');
+  const photos = CONFIG.productPhotos || [];
+  let photoIdx = 0;
+  FLOATY_SLOTS.forEach(function (s, i) {
+    const el = document.createElement('div');
+    el.className = 'floaty' + (s.kind === 'sparkle' && photos.length === 0 ? ' sparkle' : '');
+    // фото товаров крупнее рисованных значков
+    const size = (photos.length > 0 && s.kind !== 'sparkle') ? Math.round(s.size * 3.4) : s.size;
+    el.style.left = s.x;
+    el.style.top = s.y;
+    el.style.width = size + 'px';
+    el.style.height = size + 'px';
+    el.style.setProperty('--dur', s.dur + 's');
+    el.style.setProperty('--delay', s.delay + 's');
+    el.style.setProperty('--rot', s.rot + 'deg');
+    if (photos.length > 0 && s.kind !== 'sparkle') {
+      // фото товаров: подставляются по кругу
+      el.innerHTML = '<img src="' + photos[photoIdx % photos.length] + '" alt="">';
+      photoIdx++;
+    } else {
+      el.innerHTML = PRODUCT_SVGS[s.kind];
+    }
+    floaties.appendChild(el);
+  });
+
+  const links = document.getElementById('links');
+  (CONFIG.buttons || []).forEach(function (item, i) {
+    const li = document.createElement('li');
+    li.className = 'reveal';
+    li.style.setProperty('--i', 5 + i);
+    const sub = item.sub ? '<span class="link-sub">' + item.sub + '</span>' : '';
+    li.innerHTML =
+      '<a class="link-card' + (item.style === 'pink' ? ' featured' : '') + '" href="' + item.url + '" target="_blank" rel="noopener">' +
+        '<span class="link-icon" aria-hidden="true">' + (ICONS[item.icon] || ICONS.link) + '</span>' +
+        '<span class="link-text">' +
+          '<span class="link-title">' + item.title + '</span>' +
+          sub +
+        '</span>' +
+        '<span class="link-arrow" aria-hidden="true">' + ICONS.arrow + '</span>' +
+      '</a>';
+    links.appendChild(li);
+  });
+
+  const branches = document.getElementById('branches');
+  CONFIG.branches.forEach(function (b, i) {
+    const li = document.createElement('li');
+    li.className = 'reveal';
+    li.style.setProperty('--i', 10 + i);
+    const phones = b.phones.map(function (p) {
+      return '<a class="chip chip-phone" href="tel:' + p.replace(/[^+\d]/g, '') + '">' + ICONS.phone + p + '</a>';
+    }).join('');
+    li.innerHTML =
+      '<div class="branch-card' + (b.featured ? ' featured' : '') + '">' +
+        '<div class="branch-head">' +
+          '<span class="branch-pin" aria-hidden="true">' + ICONS.pin + '</span>' +
+          '<div><div class="branch-name">' + b.name + '</div>' +
+          '<div class="branch-address">' + b.address + '</div></div>' +
+        '</div>' +
+        '<div class="branch-actions">' +
+          '<a class="chip chip-map" href="' + b.mapUrl + '" target="_blank" rel="noopener">' + ICONS.pin + 'Xaritada ochish</a>' +
+          phones +
+        '</div>' +
+      '</div>';
+    branches.appendChild(li);
+  });
+
+  document.getElementById('hours').innerHTML = CONFIG.workingHours.replace(/(\d{2}:\d{2}\s*—\s*\d{2}:\d{2})/, '<b>$1</b>');
+})();
+</script>
+
+</body>
+</html>
