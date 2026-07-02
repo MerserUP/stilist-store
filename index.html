@@ -438,7 +438,7 @@ const CONFIG = {
     line-height: 0.92;
     letter-spacing: 1px;
     background: linear-gradient(120deg,
-      var(--fx-bright) 0%, var(--fx) 25%, #ffc2de 50%, var(--fx) 75%, var(--fx-bright) 100%);
+      var(--fx-bright) 0%, var(--fx) 28%, #ffffff 46%, #fff0f7 54%, var(--fx) 72%, var(--fx-bright) 100%);
     background-size: 250% 100%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -963,18 +963,19 @@ const CONFIG = {
   };
 
   /* --- расстановка летающих элементов: позиции по краям, центр свободен --- */
+  // товары держатся у шапки, рядом с надписью STILIST
   const FLOATY_SLOTS = [
-    { kind: 'bottle',  x: '2%',  y: '4%',  size: 40, dur: 9,  delay: 0,   rot: -14 },
-    { kind: 'sparkle', x: '22%', y: '2%',  size: 22, dur: 14, delay: 1,   rot: 0   },
-    { kind: 'drop',    x: '82%', y: '3%',  size: 36, dur: 8,  delay: 0.5, rot: 10  },
-    { kind: 'file',    x: '88%', y: '22%', size: 42, dur: 10, delay: 1.2, rot: 22  },
-    { kind: 'heart',   x: '1%',  y: '26%', size: 38, dur: 7,  delay: 0.8, rot: -8  },
-    { kind: 'bottle',  x: '86%', y: '46%', size: 38, dur: 11, delay: 0.4, rot: 16  },
-    { kind: 'drop',    x: '3%',  y: '52%', size: 40, dur: 9,  delay: 1.6, rot: -12 },
-    { kind: 'sparkle', x: '91%', y: '62%', size: 18, dur: 12, delay: 0,   rot: 0   },
-    { kind: 'heart',   x: '2%',  y: '76%', size: 38, dur: 8,  delay: 1,   rot: 12  },
-    { kind: 'sparkle', x: '14%', y: '92%', size: 24, dur: 15, delay: 2,   rot: 0   },
-    { kind: 'file',    x: '85%', y: '84%', size: 42, dur: 11, delay: 0.9, rot: -18 },
+    { kind: 'bottle',  x: '13%', y: '1%',  size: 32, dur: 9,  delay: 0,   rot: -14 },
+    { kind: 'sparkle', x: '30%', y: '6%',  size: 20, dur: 14, delay: 1,   rot: 0   },
+    { kind: 'drop',    x: '76%', y: '1%',  size: 32, dur: 8,  delay: 0.5, rot: 10  },
+    { kind: 'file',    x: '87%', y: '9%',  size: 40, dur: 10, delay: 1.2, rot: 22  },
+    { kind: 'heart',   x: '2%',  y: '9%',  size: 40, dur: 7,  delay: 0.8, rot: -8  },
+    { kind: 'bottle',  x: '88%', y: '23%', size: 38, dur: 11, delay: 0.4, rot: 16  },
+    { kind: 'drop',    x: '2%',  y: '23%', size: 38, dur: 9,  delay: 1.6, rot: -12 },
+    { kind: 'sparkle', x: '92%', y: '36%', size: 18, dur: 12, delay: 0,   rot: 0   },
+    { kind: 'heart',   x: '85%', y: '36%', size: 36, dur: 8,  delay: 1,   rot: 12  },
+    { kind: 'sparkle', x: '8%',  y: '38%', size: 22, dur: 15, delay: 2,   rot: 0   },
+    { kind: 'file',    x: '4%',  y: '36%', size: 38, dur: 11, delay: 0.9, rot: -18 },
   ];
 
   /* --- языки --- */
