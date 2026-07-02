@@ -328,6 +328,11 @@ const CONFIG = {
   }
   @keyframes sparkle-spin { to { transform: rotate(360deg); } }
   @keyframes sparkle-pulse { from { opacity: 0.35; } to { opacity: 0.9; } }
+  /* на телефонах товары приглушаем — контент важнее */
+  @media (max-width: 700px) {
+    .floaty { opacity: 0.55; filter: drop-shadow(0 8px 18px rgba(236, 75, 157, 0.3)); }
+    .floaty.sparkle { opacity: 0.4; }
+  }
 
   /* ---------- каркас ---------- */
   .page {
@@ -996,8 +1001,11 @@ const CONFIG = {
   FLOATY_SLOTS.forEach(function (s) {
     const el = document.createElement('div');
     el.className = 'floaty' + (s.kind === 'sparkle' ? ' sparkle' : '');
-    // фото товаров крупнее рисованных значков
-    const size = (photos.length > 0 && s.kind !== 'sparkle') ? Math.round(s.size * 3.4) : s.size;
+    // фото товаров крупнее рисованных значков;
+    // на узких экранах — меньше, чтобы не перекрывать кнопки
+    const isNarrow = window.matchMedia('(max-width: 700px)').matches;
+    const mult = isNarrow ? 1.7 : 3.4;
+    const size = (photos.length > 0 && s.kind !== 'sparkle') ? Math.round(s.size * mult) : s.size;
     el.style.left = s.x;
     el.style.top = s.y;
     el.style.width = size + 'px';
