@@ -430,7 +430,6 @@ const CONFIG = {
 
   /* ---------- заголовок: перелив внутри букв ---------- */
   .title {
-    position: relative;
     font-family: var(--display);
     font-weight: 400;
     font-size: clamp(58px, 19vw, 88px);
@@ -439,30 +438,13 @@ const CONFIG = {
     line-height: 0.92;
     letter-spacing: 1px;
     background: linear-gradient(120deg,
-      #ffffff 0%, #ffddee 28%, #ffffff 50%, #ffcfe6 72%, #ffffff 100%);
+      var(--fx-bright) 0%, var(--fx) 25%, #ffc2de 50%, var(--fx) 75%, var(--fx-bright) 100%);
     background-size: 250% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.35)) drop-shadow(0 8px 30px rgba(236, 75, 157, 0.4));
+    filter: drop-shadow(0 6px 26px rgba(236, 75, 157, 0.45));
     animation: title-shimmer 7s ease-in-out infinite alternate;
-  }
-  /* анимированная белая обводка букв */
-  .title::before {
-    content: attr(data-text);
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    -webkit-text-stroke: 8px rgba(255, 255, 255, 0.9);
-    background: none;
-    -webkit-background-clip: border-box;
-    background-clip: border-box;
-    color: transparent;
-    animation: outline-pulse 3s ease-in-out infinite alternate;
-  }
-  @keyframes outline-pulse {
-    from { opacity: 0.25; }
-    to   { opacity: 0.9; }
   }
   @keyframes title-shimmer {
     from { background-position: 0% 0; }
