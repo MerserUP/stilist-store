@@ -223,7 +223,7 @@ const CONFIG = {
     position: absolute;
     inset: -30%;
     z-index: -1; /* перелив — глубже всех слоёв фона */
-    opacity: 0.9;
+    opacity: 1;
     background: linear-gradient(115deg,
       #0a020a 0%,
       #2b0a26 18%,
@@ -243,24 +243,24 @@ const CONFIG = {
   .aurora {
     position: absolute;
     border-radius: 50%;
-    filter: blur(90px);
+    filter: blur(70px);
   }
   .aurora-1 {
     width: 58vmax; height: 58vmax;
     top: -24vmax; left: -18vmax;
-    background: radial-gradient(circle, rgba(236, 75, 157, 0.32), transparent 65%);
+    background: radial-gradient(circle, rgba(236, 75, 157, 0.5), transparent 65%);
     animation: drift-1 24s var(--ease-out) infinite alternate;
   }
   .aurora-2 {
     width: 48vmax; height: 48vmax;
     bottom: -20vmax; right: -15vmax;
-    background: radial-gradient(circle, rgba(120, 20, 100, 0.4), transparent 65%);
+    background: radial-gradient(circle, rgba(150, 28, 118, 0.55), transparent 65%);
     animation: drift-2 30s var(--ease-out) infinite alternate;
   }
   .aurora-3 {
     width: 32vmax; height: 32vmax;
     top: 36%; left: 56%;
-    background: radial-gradient(circle, rgba(255, 138, 196, 0.16), transparent 60%);
+    background: radial-gradient(circle, rgba(255, 138, 196, 0.28), transparent 60%);
     animation: drift-3 20s ease-in-out infinite alternate;
   }
   @keyframes drift-1 { to { transform: translate(9vmax, 7vmax) scale(1.15); } }
@@ -270,7 +270,7 @@ const CONFIG = {
   .vignette {
     position: absolute;
     inset: 0;
-    background: radial-gradient(120% 90% at 50% 15%, transparent 35%, rgba(5, 1, 4, 0.75) 100%);
+    background: radial-gradient(120% 90% at 50% 15%, transparent 55%, rgba(5, 1, 4, 0.35) 100%);
   }
   .grain {
     position: absolute;
